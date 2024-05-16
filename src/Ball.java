@@ -1,8 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-
 public class Ball {
     private JLabel ball;
     private int xSpeed;
@@ -14,5 +10,17 @@ public class Ball {
     }
     public JLabel getBall() {
         return ball;
+    }
+    public int getXSpeed() {
+        return xSpeed;
+    }
+    public int getYSpeed() {
+        return ySpeed;
+    }
+    public void setXSpeed(int x) {
+        xSpeed += x;
+    }
+    public void setYSpeed(int y) {
+        ySpeed += y;
     }
 }
