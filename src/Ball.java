@@ -17,10 +17,10 @@ public class Ball {
     public int getYSpeed() {
         return ySpeed;
     }
-    public void setXSpeed(int x) {
+    public void incrementXSpeed(int x) {
         xSpeed += x;
     }
-    public void setYSpeed(int y) {
+    public void incrementYSpeed(int y) {
         ySpeed += y;
     }
 }
