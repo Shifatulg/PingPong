@@ -6,6 +6,7 @@ public class Player {
     private int score;
     public Player() {
         paddle = new JLabel(new ImageIcon("src/paddle.png"));
+        paddle.setSize(50,200);
         speed = .1;
         score = 0;
     }

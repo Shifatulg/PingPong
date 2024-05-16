@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.*;
+
 public class Ball {
     private JLabel ball;
     private int xSpeed;
@@ -8,8 +10,11 @@ public class Ball {
         xSpeed = x;
         ySpeed = y;
     }
-    public JLabel getBall() {
+    public Component getBall() {
         return ball;
+    }
+    public ImageIcon getImage() {
+        return new ImageIcon("src/ball.png");
     }
     public int getXSpeed() {
         return xSpeed;
