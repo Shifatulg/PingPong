@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class Player {
     private JLabel paddle;
@@ -24,5 +25,9 @@ public class Player {
     }
     public void resetSpeed() {
         speed = .1;
+    }
+
+    public Image getImage() {
+        return new ImageIcon("src/paddle.png").getImage();
     }
 }

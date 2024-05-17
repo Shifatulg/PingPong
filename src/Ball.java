@@ -13,8 +13,8 @@ public class Ball {
     public Component getBall() {
         return ball;
     }
-    public ImageIcon getImage() {
-        return new ImageIcon("src/ball.png");
+    public Image getImage() {
+        return new ImageIcon("src/ball.png").getImage();
     }
     public int getXSpeed() {
         return xSpeed;
