@@ -5,10 +5,14 @@ public class Ball {
     private JLabel ball;
     private int xSpeed;
     private int ySpeed;
-    public Ball(int x, int y) {
+    private double xCoord;
+    private double yCoord;
+    public Ball(int xSpeed, int ySpeed, int xCoord, int yCoord) {
         ball = new JLabel(new ImageIcon("src/ball.png"));
-        xSpeed = x;
-        ySpeed = y;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
     }
     public Component getBall() {
         return ball;
@@ -22,8 +26,14 @@ public class Ball {
     public int getYSpeed() {
         return ySpeed;
     }
-    public void incrementXSpeed(int x) {
-        xSpeed += x;
+    public int getxCoord() {
+        return (int) xCoord;
+    }
+    public int getyCoord() {
+        return (int) yCoord;
+    }
+    public void incrementXSpeed(double x) {
+        xCoord += x;
     }
     public void incrementYSpeed(int y) {
         ySpeed += y;
