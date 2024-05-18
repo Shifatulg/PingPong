@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Player {
     private JLabel paddle;
@@ -7,6 +9,7 @@ public class Player {
     private double xCoord;
     private double yCoord;
     private int score;
+    private Timer time;
     public Player(int x, int y) {
         paddle = new JLabel(new ImageIcon("src/paddle.png"));
         paddle.setSize(50,200);
@@ -14,6 +17,7 @@ public class Player {
         score = 0;
         xCoord = x;
         yCoord = y;
+
     }
     public JLabel getPaddle() {
         return paddle;
@@ -24,9 +28,13 @@ public class Player {
     public void incrementScore() {
         score++;
     }
-    public void incrementSpeed(double speed) {
+    public void decreaseSpeed(double speed) {
         this.speed += speed;
     }
+    public void incrementSpeed(double speed) {
+        this.speed -= speed;
+    }
+
     public int getxCoord() {
         return (int) xCoord;
     }

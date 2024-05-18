@@ -2,16 +2,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
 import java.security.Key;
+import java.util.TimerTask;
 
 public class GamePanel extends JPanel implements KeyListener {
     private Ball ball;
     private Player player1;
     private Player player2;
+    private Timer time;
     public GamePanel() {
+        time = new Timer();
         ball = new Ball(4,5, 700,425);
         player1 = new Player(10, 400);
         player2 = new Player(1460, 400);
+        time = new Timer();
         this.addKeyListener(this);
         setFocusable(true);
         requestFocusInWindow();
@@ -33,17 +38,15 @@ public class GamePanel extends JPanel implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
+    public void keyTyped(KeyEvent e) { }
 
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            player2.incrementyCoord(5);
+            player2.incrementSpeed(5);
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            player2.decreaseyCoord(5);
+            player2.decreaseSpeed(5);
         }
     }
 
