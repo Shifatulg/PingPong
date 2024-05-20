@@ -41,16 +41,24 @@ public class Player {
     public int getyCoord() {
         return (int) yCoord;
     }
-    public void incrementyCoord(double y) {
-        yCoord -= y;
-    }
-    public void decreaseyCoord(double y) {
-        yCoord += y;
+    public void incrementyCoord() {
+        if (yCoord + speed < 0 || yCoord + speed > 750) {
+            yCoord += 0;
+        } else {
+            yCoord += speed;
+        }
     }
     public void resetSpeed() {
         speed = .1;
     }
     public Image getImage() {
         return new ImageIcon("src/paddle.png").getImage();
+    }
+    // we use a "bounding Rectangle" for detecting collision
+    public Rectangle playerRect() {
+        int imageHeight = getImage().getHeight(null);
+        int imageWidth = getImage().getWidth(null);
+        Rectangle rect = new Rectangle((int) xCoord, (int) yCoord, imageWidth, imageHeight);
+        return rect;
     }
 }

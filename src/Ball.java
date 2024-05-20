@@ -38,4 +38,10 @@ public class Ball {
     public void incrementYSpeed(int y) {
         ySpeed += y;
     }
+    public Rectangle ballRect() {
+        int imageHeight = getImage().getHeight(null);
+        int imageWidth = getImage().getWidth(null);
+        Rectangle rect = new Rectangle((int) xCoord, (int) yCoord, imageWidth, imageHeight);
+        return rect;
+    }
 }
