@@ -23,7 +23,6 @@ public class GameFrame {
     private void run() {
         while (true) {
             panel.repaint();
-            panel.getBall().incrementXSpeed(0.000015);
         }
     }
 }

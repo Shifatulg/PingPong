@@ -54,7 +54,6 @@ public class Player {
     public Image getImage() {
         return new ImageIcon("src/paddle.png").getImage();
     }
-    // we use a "bounding Rectangle" for detecting collision
     public Rectangle playerRect() {
         int imageHeight = getImage().getHeight(null);
         int imageWidth = getImage().getWidth(null);
