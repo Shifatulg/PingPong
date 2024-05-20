@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     private Boolean[] directions;
     public GamePanel() {
         directions = new Boolean[]{false, false, false, false};
-        ball = new Ball(1,1, 700,425);
+        ball = new Ball(2.5,2.5, 700,425);
         player1 = new Player(10, 400);
         player2 = new Player(1460, 400);
         time = new Timer(50, (ActionListener) this);
@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         g.drawImage(ball.getImage(),ball.getxCoord(),ball.getyCoord(),null);
         g.drawImage(player1.getImage(),player1.getxCoord(),player1.getyCoord(),null);
         g.drawImage(player2.getImage(),player2.getxCoord(),player2.getyCoord(),null);
-        if (player2.playerRect().intersects(ball.ballRect()) || player2.playerRect().intersects(ball.ballRect())) {
+        if (player1.playerRect().intersects(ball.ballRect()) || player2.playerRect().intersects(ball.ballRect())) {
             ball.inverseX();
         }
         if (directions[0]) {
