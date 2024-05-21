@@ -8,34 +8,42 @@ public class Player {
     private double speed;
     private double xCoord;
     private double yCoord;
-    private int score;
+    private static int player1Score = 0;
+    private static int player2Score = 0;
     private Timer time;
     public Player(int x, int y) {
         paddle = new JLabel(new ImageIcon("src/paddle.png"));
         paddle.setSize(50,200);
         speed = 0;
-        score = 0;
         xCoord = x;
         yCoord = y;
+    }
+    public static int getPlayer1Score() {
+        return player1Score;
+    }
+    public static int getPlayer2Score() {
+        return player2Score;
+    }    public static void incrementPlayer1Score() {
+        player1Score++;
+    }
+    public static void incrementPlayer2Score() {
+        player2Score++;
+    }
 
-    }
-    public JLabel getPaddle() {
-        return paddle;
-    }
-    public int getScore() {
-        return score;
-    }
-    public void incrementScore() {
-        score++;
-    }
     public double getSpeed() {
         return speed;
     }
     public void decreaseSpeed(double speed) {
         this.speed += speed;
+        if (speed > 2) {
+            this.speed = 2;
+        }
     }
     public void incrementSpeed(double speed) {
         this.speed -= speed;
+        if (speed < -2) {
+            this.speed = -2;
+        }
     }
 
     public int getxCoord() {
@@ -52,7 +60,7 @@ public class Player {
         }
     }
     public void resetSpeed() {
-        speed = .1;
+        speed = 0;
     }
     public Image getImage() {
         return new ImageIcon("src/paddle.png").getImage();

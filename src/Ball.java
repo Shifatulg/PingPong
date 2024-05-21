@@ -7,24 +7,17 @@ public class Ball {
     private double ySpeed;
     private double xCoord;
     private double yCoord;
+    private int gameNum;
     public Ball(double xSpeed, double ySpeed, int xCoord, int yCoord) {
         ball = new JLabel(new ImageIcon("src/ball.png"));
+        gameNum = 1;
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
     }
-    public Component getBall() {
-        return ball;
-    }
     public Image getImage() {
         return new ImageIcon("src/ball.png").getImage();
-    }
-    public double getXSpeed() {
-        return xSpeed;
-    }
-    public double getYSpeed() {
-        return ySpeed;
     }
     public void inverseX() {
         xSpeed *= -1;
@@ -36,14 +29,26 @@ public class Ball {
         return (int) yCoord;
     }
     public void incrementXSpeed(double x) {
-        xCoord += x;
-    }
-    public void incrementYSpeed(double y) {
-        ySpeed += y;
+        if (xSpeed < 0) {
+            xSpeed -= x;
+        } else {
+            xSpeed += x;
+        }
     }
     public void incrementXCoord() {
         if (xCoord <= -25 || xCoord >= 1450) {
-            xSpeed *= -1;
+            if (xCoord <= -25) {
+                Player.incrementPlayer2Score();
+            }
+            if (xCoord >= 1450) {
+                Player.incrementPlayer1Score();
+            }
+            xCoord = 700;
+            yCoord = 425;
+            xSpeed = -2.5;
+            ySpeed = 6;
+            gameNum++;
+            xSpeed *= Math.pow(-1,gameNum);
         }
         xCoord += xSpeed;
     }
@@ -54,9 +59,13 @@ public class Ball {
         yCoord += ySpeed;
     }
     public void changeSpeed(double speed) {
-        if (speed != 0) {
-            ySpeed = (ySpeed - speed) / 1.5;
-            ySpeed *= -1;
+        ySpeed = (ySpeed + speed) / 1.5;
+        ySpeed /= 1.05;
+        if (ySpeed > 7.5) {
+            ySpeed = 7.5;
+        }
+        if (ySpeed < -7.5) {
+            ySpeed = -7.5;
         }
     }
     public Rectangle ballRect() {
