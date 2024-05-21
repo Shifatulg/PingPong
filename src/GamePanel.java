@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.security.Key;
-import java.util.TimerTask;
 
 public class GamePanel extends JPanel implements KeyListener, ActionListener {
     private Ball ball;
@@ -18,7 +16,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         ball = new Ball(2.5,2.5, 700,425);
         player1 = new Player(10, 400);
         player2 = new Player(1460, 400);
-        time = new Timer(50, (ActionListener) this);
+        time = new Timer(100, (ActionListener) this);
         time.start();
         this.addKeyListener(this);
         setFocusable(true);
@@ -38,9 +36,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         g.drawImage(ball.getImage(),ball.getxCoord(),ball.getyCoord(),null);
         g.drawImage(player1.getImage(),player1.getxCoord(),player1.getyCoord(),null);
         g.drawImage(player2.getImage(),player2.getxCoord(),player2.getyCoord(),null);
-        if (player1.playerRect().intersects(ball.ballRect()) || player2.playerRect().intersects(ball.ballRect())) {
-            ball.inverseX();
-        }
+
         if (directions[0]) {
             player1.incrementSpeed(.1);
             player1.incrementyCoord();
@@ -104,5 +100,16 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) { }
+    public void actionPerformed(ActionEvent e) {
+        if (player1.playerRect().intersects(ball.ballRect())) {
+            ball.inverseX();
+            ball.incrementXCoord();
+            ball.changeSpeed(player1.getSpeed());
+        }
+        if (player2.playerRect().intersects(ball.ballRect())) {
+            ball.inverseX();
+            ball.incrementXCoord();
+            ball.changeSpeed(player2.getSpeed());
+        }
+    }
 }

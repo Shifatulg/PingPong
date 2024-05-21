@@ -53,6 +53,12 @@ public class Ball {
         }
         yCoord += ySpeed;
     }
+    public void changeSpeed(double speed) {
+        if (speed != 0) {
+            ySpeed = (ySpeed - speed) / 1.5;
+            ySpeed *= -1;
+        }
+    }
     public Rectangle ballRect() {
         int imageHeight = getImage().getHeight(null);
         int imageWidth = getImage().getWidth(null);

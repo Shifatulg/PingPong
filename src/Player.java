@@ -13,7 +13,7 @@ public class Player {
     public Player(int x, int y) {
         paddle = new JLabel(new ImageIcon("src/paddle.png"));
         paddle.setSize(50,200);
-        speed = .1;
+        speed = 0;
         score = 0;
         xCoord = x;
         yCoord = y;
@@ -27,6 +27,9 @@ public class Player {
     }
     public void incrementScore() {
         score++;
+    }
+    public double getSpeed() {
+        return speed;
     }
     public void decreaseSpeed(double speed) {
         this.speed += speed;
