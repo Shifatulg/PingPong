@@ -13,7 +13,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     private Boolean[] directions;
     public GamePanel() {
         directions = new Boolean[]{false, false, false, false};
-        ball = new Ball(2.5,6, 700,425);
+        ball = new Ball(-2.5,6, 700,425);
         player1 = new Player(10, 400);
         player2 = new Player(1460, 400);
         time = new Timer(50, this);
@@ -123,7 +123,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        ball.incrementXSpeed(.008);
+        ball.incrementXSpeed(.016);
         if (player1.playerRect().intersects(ball.ballRect())) {
             ball.inverseX();
             ball.incrementXCoord();
