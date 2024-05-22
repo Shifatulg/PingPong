@@ -16,7 +16,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         ball = new Ball(2.5,6, 700,425);
         player1 = new Player(10, 400);
         player2 = new Player(1460, 400);
-        time = new Timer(1500, this);
+        time = new Timer(50, this);
         this.addKeyListener(this);
         setFocusable(true);
         requestFocusInWindow();
@@ -59,17 +59,6 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         g.drawString(String.valueOf(Player.getPlayer1Score()), 500, 200);
         g.setColor(getColor(Player.getPlayer2Score()));
         g.drawString(String.valueOf(Player.getPlayer2Score()), 1000, 200);
-
-        if (player1.playerRect().intersects(ball.ballRect())) {
-            ball.inverseX();
-            ball.incrementXCoord();
-            ball.changeSpeed(player1.getSpeed());
-        }
-        if (player2.playerRect().intersects(ball.ballRect())) {
-            ball.inverseX();
-            ball.incrementXCoord();
-            ball.changeSpeed(player2.getSpeed());
-        }
 
         if (directions[0]) {
             player1.incrementSpeed(.4);
@@ -134,6 +123,24 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        ball.incrementXSpeed(.5);
+        ball.incrementXSpeed(.008);
+        if (player1.playerRect().intersects(ball.ballRect())) {
+            ball.inverseX();
+            ball.incrementXCoord();
+            ball.changeSpeed(player1.getSpeed());
+            for (int i = 0; i < 4; i++) {
+                ball.incrementXCoord();
+                ball.incrementYCoord();
+            }
+        }
+        if (player2.playerRect().intersects(ball.ballRect())) {
+            ball.inverseX();
+            ball.incrementXCoord();
+            ball.changeSpeed(player2.getSpeed());
+            for (int i = 0; i < 4; i++) {
+                ball.incrementXCoord();
+                ball.incrementYCoord();
+            }
+        }
     }
 }

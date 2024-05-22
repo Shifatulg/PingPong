@@ -45,7 +45,7 @@ public class Ball {
             }
             xCoord = 700;
             yCoord = 425;
-            xSpeed = -2.5;
+//            xSpeed = -2.5;
             ySpeed = 6;
             gameNum++;
             xSpeed *= Math.pow(-1,gameNum);
