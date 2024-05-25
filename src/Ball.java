@@ -22,6 +22,9 @@ public class Ball {
     public void inverseX() {
         xSpeed *= -1;
     }
+    public void setXCoord(int x) {
+        xCoord = x;
+    }
     public int getxCoord() {
         return (int) xCoord;
     }

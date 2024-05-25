@@ -43,8 +43,8 @@ public class GravityPanel extends JPanel implements KeyListener, ActionListener 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(ball.getImage(),ball.getxCoord(),ball.getyCoord(),null);
-        g.drawImage(player1.getImage(),player1.getxCoord(),player1.getyCoord(),null);
-        g.drawImage(player2.getImage(),player2.getxCoord(),player2.getyCoord(),null);
+        g.drawImage(player1.getImage(),player1.getXCoord(),player1.getYCoord(),null);
+        g.drawImage(player2.getImage(),player2.getXCoord(),player2.getYCoord(),null);
         g.setFont(new Font("Arial", Font.BOLD, 30));
         g.setColor(getColor(Player.getPlayer1Score()));
         g.drawString(String.valueOf(Player.getPlayer1Score()), 500, 200);
@@ -121,21 +121,13 @@ public class GravityPanel extends JPanel implements KeyListener, ActionListener 
         ball.incrementXSpeed(.0008);
         if (player1.playerRect().intersects(ball.ballRect())) {
             ball.inverseX();
-            ball.incrementXCoord();
+            ball.setXCoord(60);
             ball.changeSpeed(player1.getSpeed());
-            for (int i = 0; i < 4; i++) {
-                ball.incrementXCoord();
-                ball.incrementYCoord();
-            }
         }
         if (player2.playerRect().intersects(ball.ballRect())) {
             ball.inverseX();
-            ball.incrementXCoord();
+            ball.setXCoord(1350);
             ball.changeSpeed(player2.getSpeed());
-            for (int i = 0; i < 4; i++) {
-                ball.incrementXCoord();
-                ball.incrementYCoord();
-            }
         }
         if (!(directions[0] || directions[1])) {
             player1.incrementYCoord(false);

@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class Player {
     private JLabel paddle;
@@ -45,11 +44,10 @@ public class Player {
             this.speed = -2;
         }
     }
-
-    public int getxCoord() {
+    public int getXCoord() {
         return (int) xCoord;
     }
-    public int getyCoord() {
+    public int getYCoord() {
         return (int) yCoord;
     }
     public void incrementYCoord() {

@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class GamePanel extends JPanel implements KeyListener, ActionListener {
+public class NormalPanel extends JPanel implements KeyListener, ActionListener {
     private Ball ball;
     private Player player1;
     private Player player2;
     private Timer time;
     private Boolean[] directions;
-    public GamePanel() {
+    public NormalPanel() {
         directions = new Boolean[]{false, false, false, false};
         ball = new Ball(2.5,6, 700,425);
         player1 = new Player(10, 400);
@@ -52,8 +52,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(ball.getImage(),ball.getxCoord(),ball.getyCoord(),null);
-        g.drawImage(player1.getImage(),player1.getxCoord(),player1.getyCoord(),null);
-        g.drawImage(player2.getImage(),player2.getxCoord(),player2.getyCoord(),null);
+        g.drawImage(player1.getImage(),player1.getXCoord(),player1.getYCoord(),null);
+        g.drawImage(player2.getImage(),player2.getXCoord(),player2.getYCoord(),null);
         g.setFont(new Font("Arial", Font.BOLD, 30));
         g.setColor(getColor(Player.getPlayer1Score()));
         g.drawString(String.valueOf(Player.getPlayer1Score()), 500, 200);
@@ -126,21 +126,13 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         ball.incrementXSpeed(.008);
         if (player1.playerRect().intersects(ball.ballRect())) {
             ball.inverseX();
-            ball.incrementXCoord();
+            ball.setXCoord(20);
             ball.changeSpeed(player1.getSpeed());
-            for (int i = 0; i < 4; i++) {
-                ball.incrementXCoord();
-                ball.incrementYCoord();
-            }
         }
         if (player2.playerRect().intersects(ball.ballRect())) {
             ball.inverseX();
-            ball.incrementXCoord();
+            ball.setXCoord(1400);
             ball.changeSpeed(player2.getSpeed());
-            for (int i = 0; i < 4; i++) {
-                ball.incrementXCoord();
-                ball.incrementYCoord();
-            }
         }
     }
 }
