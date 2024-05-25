@@ -29,10 +29,12 @@ public class Ball {
         return (int) yCoord;
     }
     public void incrementXSpeed(double x) {
-        if (xSpeed < 0) {
-            xSpeed -= x;
-        } else {
-            xSpeed += x;
+        if (xSpeed < 8 && xSpeed > -8) {
+            if (xSpeed < 0) {
+                xSpeed -= x;
+            } else {
+                xSpeed += x;
+            }
         }
     }
     public void incrementXCoord() {

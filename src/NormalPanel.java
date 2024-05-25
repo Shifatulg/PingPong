@@ -5,22 +5,31 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class NormalPanel extends JPanel implements KeyListener, ActionListener {
+public class GamePanel extends JPanel implements KeyListener, ActionListener {
     private Ball ball;
     private Player player1;
     private Player player2;
     private Timer time;
     private Boolean[] directions;
-    public NormalPanel() {
+    public GamePanel() {
         directions = new Boolean[]{false, false, false, false};
-        ball = new Ball(2.5,4, 700,425);
+        ball = new Ball(2.5,6, 700,425);
         player1 = new Player(10, 400);
-        player2 = new Player(1440, 400);
+        player2 = new Player(1460, 400);
         time = new Timer(50, this);
         this.addKeyListener(this);
         setFocusable(true);
         requestFocusInWindow();
         time.start();
+    }
+    public Ball getBall() {
+        return ball;
+    }
+    public Player getPlayer1() {
+        return player1;
+    }
+    public Player getPlayer2() {
+        return player2;
     }
     public Color getColor(int score) {
         score %= 7;
