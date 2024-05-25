@@ -5,31 +5,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class GamePanel extends JPanel implements KeyListener, ActionListener {
+public class NormalPanel extends JPanel implements KeyListener, ActionListener {
     private Ball ball;
     private Player player1;
     private Player player2;
     private Timer time;
     private Boolean[] directions;
-    public GamePanel() {
+    public NormalPanel() {
         directions = new Boolean[]{false, false, false, false};
-        ball = new Ball(2.5,6, 700,425);
+        ball = new Ball(2.5,4, 700,425);
         player1 = new Player(10, 400);
-        player2 = new Player(1460, 400);
+        player2 = new Player(1440, 400);
         time = new Timer(50, this);
         this.addKeyListener(this);
         setFocusable(true);
         requestFocusInWindow();
         time.start();
-    }
-    public Ball getBall() {
-        return ball;
-    }
-    public Player getPlayer1() {
-        return player1;
-    }
-    public Player getPlayer2() {
-        return player2;
     }
     public Color getColor(int score) {
         score %= 7;
@@ -62,25 +53,25 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
         if (directions[0]) {
             player1.incrementSpeed(.4);
-            player1.incrementyCoord();
+            player1.incrementYCoord();
         }
 
         // player moves right (D)
         if (directions[1]) {
             player1.decreaseSpeed(.4);
-            player1.incrementyCoord();
+            player1.incrementYCoord();
         }
 
         // player moves up (W)
         if (directions[2]) {
             player2.incrementSpeed(.4);
-            player2.incrementyCoord();
+            player2.incrementYCoord();
         }
 
         // player moves down (S)
         if (directions[3]) {
             player2.decreaseSpeed(.4);
-            player2.incrementyCoord();
+            player2.incrementYCoord();
         }
         ball.incrementXCoord();
         ball.incrementYCoord();

@@ -45,7 +45,7 @@ public class Ball {
             }
             xCoord = 700;
             yCoord = 425;
-//            xSpeed = -2.5;
+            xSpeed = -2.5;
             ySpeed = 6;
             gameNum++;
             xSpeed *= Math.pow(-1,gameNum);
@@ -59,13 +59,13 @@ public class Ball {
         yCoord += ySpeed;
     }
     public void changeSpeed(double speed) {
-        ySpeed = (ySpeed + speed) / 1.5;
-        ySpeed /= 1.05;
-        if (ySpeed > 7.5) {
-            ySpeed = 7.5;
+        ySpeed = (ySpeed + speed) / 1.575;
+
+        if (ySpeed > 6) {
+            ySpeed = 6;
         }
-        if (ySpeed < -7.5) {
-            ySpeed = -7.5;
+        if (ySpeed < -6) {
+            ySpeed = -6;
         }
     }
     public Rectangle ballRect() {

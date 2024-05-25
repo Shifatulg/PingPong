@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class GameFrame implements ActionListener {
-    private GamePanel panel;
+    private GravityPanel panel;
     private Timer time;
     public GameFrame() {
         JFrame frame = new JFrame("Welcome");
@@ -11,7 +11,7 @@ public class GameFrame implements ActionListener {
         frame.setSize(1500, 1000);
         frame.setLocationRelativeTo(null); // auto-centers frame in screen
         time = new Timer(5, this);
-        panel = new GamePanel();
+        panel = new GravityPanel();
         panel.setBackground(Color.BLACK);
         frame.add(panel);
 

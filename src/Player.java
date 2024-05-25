@@ -52,12 +52,17 @@ public class Player {
     public int getyCoord() {
         return (int) yCoord;
     }
-    public void incrementyCoord() {
+    public void incrementYCoord() {
         if (yCoord + speed < 0 || yCoord + speed > 750) {
+            speed = 0;
             yCoord += 0;
         } else {
             yCoord += speed;
         }
+    }
+    public void incrementYCoord(boolean grav) {
+        decreaseSpeed(.15);
+        incrementYCoord();
     }
     public void resetSpeed() {
         speed = 0;
