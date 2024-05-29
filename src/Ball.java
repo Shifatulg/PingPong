@@ -19,6 +19,9 @@ public class Ball {
     public Image getImage() {
         return new ImageIcon("src/ball.png").getImage();
     }
+    public void killYSpeed() {
+        ySpeed = 0;
+    }
     public void inverseX() {
         xSpeed *= -1;
     }
@@ -53,10 +56,15 @@ public class Ball {
             }
             xCoord = 700;
             yCoord = 425;
-            xSpeed = -2.5;
+            if (xSpeed < 0) {
+                xSpeed = 2.5;
+            }
+            if (xSpeed > 0) {
+                xSpeed = -2.5;
+            }
             ySpeed = 6;
             gameNum++;
-            xSpeed *= Math.pow(-1,gameNum);
+//            xSpeed *= Math.pow(-1,gameNum);
         }
         xCoord += xSpeed;
     }

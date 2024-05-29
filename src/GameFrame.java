@@ -1,9 +1,11 @@
+import com.sun.net.httpserver.Filter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class GameFrame implements ActionListener {
-    private ChaosPanel panel;
+    private JPanel panel;
     private Timer time;
     public GameFrame() {
         JFrame frame = new JFrame("Welcome");
@@ -11,7 +13,7 @@ public class GameFrame implements ActionListener {
         frame.setSize(1500, 1000);
         frame.setLocationRelativeTo(null); // auto-centers frame in screen
         time = new Timer(5, this);
-        panel = new ChaosPanel();
+        panel = new TwinPanel();
         panel.setBackground(Color.BLACK);
         frame.add(panel);
 

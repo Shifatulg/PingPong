@@ -5,22 +5,33 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class GravityPanel extends JPanel implements KeyListener, ActionListener {
-    private Ball ball;
+public class TwinPanel extends JPanel implements KeyListener, ActionListener {
+    private Ball ball1;
+    private Ball ball2;
     private Player player1;
     private Player player2;
     private Timer time;
     private Boolean[] directions;
-    public GravityPanel() {
+    public TwinPanel() {
         directions = new Boolean[]{false, false, false, false};
-        ball = new Ball(2.5,4, 700,425);
+        ball1 = new Ball(2.5,6, 800,425);
+        ball2 = new Ball(-2.5,-6,600,425);
         player1 = new Player(10, 400);
-        player2 = new Player(1440, 400);
-        time = new Timer(5, this);
+        player2 = new Player(1460, 400);
+        time = new Timer(50, this);
         this.addKeyListener(this);
         setFocusable(true);
         requestFocusInWindow();
         time.start();
+    }
+    public Ball getBall1() {
+        return ball1;
+    }
+    public Player getPlayer1() {
+        return player1;
+    }
+    public Player getPlayer2() {
+        return player2;
     }
     public Color getColor(int score) {
         score %= 7;
@@ -42,7 +53,8 @@ public class GravityPanel extends JPanel implements KeyListener, ActionListener 
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(ball.getImage(),ball.getxCoord(),ball.getyCoord(),null);
+        g.drawImage(ball1.getImage(), ball1.getxCoord(), ball1.getyCoord(),null);
+        g.drawImage(ball2.getImage(), ball2.getxCoord(), ball2.getyCoord(),null);
         g.drawImage(player1.getImage(),player1.getXCoord(),player1.getYCoord(),null);
         g.drawImage(player2.getImage(),player2.getXCoord(),player2.getYCoord(),null);
         g.setFont(new Font("Arial", Font.BOLD, 30));
@@ -73,8 +85,10 @@ public class GravityPanel extends JPanel implements KeyListener, ActionListener 
             player2.decreaseSpeed(.4);
             player2.incrementYCoord();
         }
-        ball.incrementXCoord();
-        ball.incrementYCoord();
+        ball1.incrementXCoord();
+        ball1.incrementYCoord();
+        ball2.incrementXCoord();
+        ball2.incrementYCoord();
     }
     @Override
     public void keyTyped(KeyEvent e) { }
@@ -114,22 +128,27 @@ public class GravityPanel extends JPanel implements KeyListener, ActionListener 
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        ball.incrementXSpeed(.0008);
-        if (player1.playerRect().intersects(ball.ballRect())) {
-            ball.inverseX();
-            ball.setXCoord(60);
-            ball.changeSpeed(player1.getSpeed());
+        ball1.incrementXSpeed(.008);
+        ball2.incrementXSpeed(.008);
+        if (player1.playerRect().intersects(ball1.ballRect())) {
+            ball1.inverseX();
+            ball1.setXCoord(20);
+            ball1.changeSpeed(player1.getSpeed());
         }
-        if (player2.playerRect().intersects(ball.ballRect())) {
-            ball.inverseX();
-            ball.setXCoord(1350);
-            ball.changeSpeed(player2.getSpeed());
+        if (player1.playerRect().intersects(ball2.ballRect())) {
+            ball2.inverseX();
+            ball2.setXCoord(20);
+            ball2.changeSpeed(player1.getSpeed());
         }
-        if (!(directions[0] || directions[1])) {
-            player1.incrementYCoord(false);
+        if (player2.playerRect().intersects(ball1.ballRect())) {
+            ball1.inverseX();
+            ball1.setXCoord(1400);
+            ball1.changeSpeed(player2.getSpeed());
         }
-        if (!(directions[2] || directions[3])) {
-            player2.incrementYCoord(false);
+        if (player2.playerRect().intersects(ball2.ballRect())) {
+            ball2.inverseX();
+            ball2.setXCoord(1400);
+            ball2.changeSpeed(player2.getSpeed());
         }
     }
 }

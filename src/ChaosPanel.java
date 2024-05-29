@@ -16,7 +16,7 @@ public class ChaosPanel extends JPanel implements KeyListener, ActionListener {
         ball = new Ball(2.5,6, 700,425);
         player1 = new Player(10, 400);
         player2 = new Player(1460, 400);
-        time = new Timer(50, this);
+        time = new Timer(40, this);
         this.addKeyListener(this);
         setFocusable(true);
         requestFocusInWindow();
@@ -123,19 +123,28 @@ public class ChaosPanel extends JPanel implements KeyListener, ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if ((int) (Math.random() * 300) + 1 == 1) {
+        if ((int) (Math.random() * 250) + 1 == 1) {
             ball.inverseX();
         }
-        if ((int) (Math.random() * 200) + 1 == 1) {
+        if ((int) (Math.random() * 150) + 1 == 1) {
             ball.changeSpeed(13);
         }
-        if ((int) (Math.random() * 200) + 1 == 1) {
+        if ((int) (Math.random() * 150) + 1 == 1) {
             ball.changeSpeed(-13);
         }
-        if ((int) (Math.random() * 200) + 1 == 1) {
+        if ((int) (Math.random() * 150) + 1 == 1) {
             ball.inverseY();
         }
-        ball.incrementXSpeed(.008);
+        if ((int) (Math.random() * 150) + 1 == 1) {
+            ball.inverseY();
+        }
+        if ((int) (Math.random() * 300) + 1 == 1) {
+            ball.killYSpeed();
+        }
+        if ((int) (Math.random() * 200) + 1 == 1) {
+            ball.incrementXSpeed(1);
+        }
+        ball.incrementXSpeed(.016);
         if (player1.playerRect().intersects(ball.ballRect())) {
             ball.inverseX();
             ball.setXCoord(20);
