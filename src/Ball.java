@@ -50,21 +50,17 @@ public class Ball {
         if (xCoord <= -25 || xCoord >= 1450) {
             if (xCoord <= -25) {
                 Player.incrementPlayer2Score();
+                xSpeed = 2.5;
+
             }
             if (xCoord >= 1450) {
                 Player.incrementPlayer1Score();
+                xSpeed = -2.5;
             }
             xCoord = 700;
             yCoord = 425;
-            if (xSpeed < 0) {
-                xSpeed = 2.5;
-            }
-            if (xSpeed > 0) {
-                xSpeed = -2.5;
-            }
-            ySpeed = 6;
+            ySpeed = 4;
             gameNum++;
-//            xSpeed *= Math.pow(-1,gameNum);
         }
         xCoord += xSpeed;
     }

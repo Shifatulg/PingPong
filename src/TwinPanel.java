@@ -14,8 +14,8 @@ public class TwinPanel extends JPanel implements KeyListener, ActionListener {
     private Boolean[] directions;
     public TwinPanel() {
         directions = new Boolean[]{false, false, false, false};
-        ball1 = new Ball(2.5,6, 800,425);
-        ball2 = new Ball(-2.5,-6,600,425);
+        ball1 = new Ball(2.5,4, 800,425);
+        ball2 = new Ball(-2.5,-4,600,425);
         player1 = new Player(10, 400);
         player2 = new Player(1460, 400);
         time = new Timer(50, this);

@@ -13,7 +13,7 @@ public class ChaosPanel extends JPanel implements KeyListener, ActionListener {
     private Boolean[] directions;
     public ChaosPanel() {
         directions = new Boolean[]{false, false, false, false};
-        ball = new Ball(2.5,6, 700,425);
+        ball = new Ball(2.5,4, 700,425);
         player1 = new Player(10, 400);
         player2 = new Player(1460, 400);
         time = new Timer(40, this);
