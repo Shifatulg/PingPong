@@ -114,7 +114,7 @@ public class GravityPanel extends JPanel implements KeyListener, ActionListener 
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        ball.incrementXSpeed(.0008);
+        ball.incrementXSpeed(.008);
         if (player1.playerRect().intersects(ball.ballRect())) {
             ball.inverseX();
             ball.setXCoord(60);

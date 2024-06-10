@@ -144,7 +144,7 @@ public class ChaosPanel extends JPanel implements KeyListener, ActionListener {
         if ((int) (Math.random() * 200) + 1 == 1) {
             ball.incrementXSpeed(1);
         }
-        ball.incrementXSpeed(.016);
+        ball.incrementXSpeed(.05);
         if (player1.playerRect().intersects(ball.ballRect())) {
             ball.inverseX();
             ball.setXCoord(20);

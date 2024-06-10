@@ -123,7 +123,7 @@ public class NormalPanel extends JPanel implements KeyListener, ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        ball.incrementXSpeed(.008);
+        ball.incrementXSpeed(.05);
         if (player1.playerRect().intersects(ball.ballRect())) {
             ball.inverseX();
             ball.setXCoord(20);

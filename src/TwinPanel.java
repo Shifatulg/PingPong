@@ -128,8 +128,8 @@ public class TwinPanel extends JPanel implements KeyListener, ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        ball1.incrementXSpeed(.008);
-        ball2.incrementXSpeed(.008);
+        ball1.incrementXSpeed(.05);
+        ball2.incrementXSpeed(.05);
         if (player1.playerRect().intersects(ball1.ballRect())) {
             ball1.inverseX();
             ball1.setXCoord(20);

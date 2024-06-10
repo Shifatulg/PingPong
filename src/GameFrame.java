@@ -1,6 +1,8 @@
 import com.sun.net.httpserver.Filter;
 
 import javax.swing.*;
+import javax.swing.plaf.TextUI;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -23,28 +25,32 @@ public class GameFrame implements ActionListener {
         twin.addActionListener(this);
         chaos.addActionListener(this);
         gravity.addActionListener(this);
+        twin.setFocusPainted(false);
+
+        twin.setBackground(Color.RED);
+        twin.setOpaque(true);
+        twin.setBounds(100, 100, 150, 100);
+        chaos.setBackground(Color.ORANGE);
+        chaos.setOpaque(true);
+        chaos.setBounds(550, 100, 150, 100);
+        gravity.setBackground(Color.CYAN);
+        gravity.setOpaque(true);
+        gravity.setBounds(100, 550, 150, 100);
+        normal.setBackground(Color.BLUE);
+        normal.setOpaque(true);
+        normal.setBounds(550, 550, 150, 100);
+        panel.setBackground(Color.GRAY);
+        JLabel text = new JLabel();
+        text.setFont(new Font("Arial", Font.BOLD, 30));
+        text.setOpaque(true);
+        text.setText("Welcome to Pong");
+        text.setBackground(Color.GRAY);
+        text.setBounds(275, 325, 400, 200);
         panel.setLayout(null);
         panel.add(twin);
         panel.add(chaos);
         panel.add(gravity);
         panel.add(normal);
-        twin.setBackground(Color.RED);
-        twin.setOpaque(true);
-        twin.setBounds(100,100,150,100);
-        chaos.setBackground(Color.ORANGE);
-        chaos.setOpaque(true);
-        chaos.setBounds(550,100,150,100);
-        gravity.setBackground(Color.CYAN);
-        gravity.setOpaque(true);
-        gravity.setBounds(100,550,150,100);
-        normal.setBackground(Color.BLUE);
-        normal.setOpaque(true);
-        normal.setBounds(550,550,150,100);
-//        panel.setBackground(Color.BLACK);
-        JTextField text = new JTextField();
-        text.setOpaque(true);
-        text.setText("Welcome to Pong");
-        text.setBounds(325,325,200,200);
         panel.add(text);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 800);
