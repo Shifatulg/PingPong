@@ -26,7 +26,6 @@ public class GameFrame implements ActionListener {
         chaos.addActionListener(this);
         gravity.addActionListener(this);
         twin.setFocusPainted(false);
-
         twin.setBackground(Color.RED);
         twin.setOpaque(true);
         twin.setBounds(100, 100, 150, 100);
@@ -61,6 +60,14 @@ public class GameFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+        if (Player.getPlayer1Score() == 9) {
+            System.out.println("Player one wins");
+            System.exit(0);
+        }
+        if (Player.getPlayer2Score() == 9) {
+            System.out.println("Player two wins");
+            System.exit(0);
+        }
         if (actionEvent.getSource() == time) {
             panel.repaint();
         } else {

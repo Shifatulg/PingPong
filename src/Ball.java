@@ -51,7 +51,6 @@ public class Ball {
             if (xCoord <= -25) {
                 Player.incrementPlayer2Score();
                 xSpeed = 2.5;
-
             }
             if (xCoord >= 1450) {
                 Player.incrementPlayer1Score();
@@ -71,13 +70,14 @@ public class Ball {
         yCoord += ySpeed;
     }
     public void changeSpeed(double speed) {
-        ySpeed = (ySpeed + speed) / 1.575;
-
-        if (ySpeed > 6) {
-            ySpeed = 6;
-        }
-        if (ySpeed < -6) {
-            ySpeed = -6;
+        if (speed != 0) {
+            ySpeed = (ySpeed + speed) / 1.575;
+            if (ySpeed > 6) {
+                ySpeed = 6;
+            }
+            if (ySpeed < -6) {
+                ySpeed = -6;
+            }
         }
     }
     public Rectangle ballRect() {
